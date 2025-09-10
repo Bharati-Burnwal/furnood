@@ -77,7 +77,20 @@ const Cart = () => {
                       </tr>
                     ))}
                   </tbody>
-                </table>                
+                  <tfoot>
+                    <tr>
+                      <td colSpan="4" className="text-end">
+                        <h6>Total Amount :</h6>
+                      </td>
+                    
+                      <td colSpan="2">
+                        <h6>${cartItem.reduce((a,b) => a + (b.price * b.quantity), 0).toFixed(2)}</h6>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>   
+ 
+                       
                 <div className="cart-btn-wrap d-flex justify-content-between mt-5">
                   <button className="main-btn" onClick={clearCart}>Clear Cart</button>
                   <Link to="/checkout" className="main-btn">Go To Checkout</Link>

@@ -1,6 +1,8 @@
 import Innerbanner from "../components/Innerbanner";
 import "./css/checkout.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Checkout = () => {
   const [showBillingForm, setShowBillingForm] = useState(false);
@@ -20,7 +22,24 @@ const Checkout = () => {
     expiryYear: '',
     cvv: '',
     termsAccepted: false,
+
+    b_firstName: '',
+    b_lastName: '',
+    b_address: '',
+    b_city: '',
+    b_zip: '',
+    b_country: '',
+    b_state: '',
+    b_email: '',
+    b_phone: '',
+    b_paymentMethod: '',
+    b_cardNumber: '',
+    b_expiryMonth: '',
+    b_expiryYear: '',
+    b_cvv: '',
+    b_termsAccepted: false,
   });
+
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -52,6 +71,21 @@ const Checkout = () => {
     // Terms and Conditions Validation
     if (!formData.termsAccepted) newErrors.terms = 'You must accept the terms and conditions';
 
+    if (showBillingForm) {
+      if (!formData.b_firstName.trim()) newErrors.b_firstName = 'First name is required';
+      if (!formData.b_lastName.trim()) newErrors.b_lastName = 'Last name is required';
+      if (!formData.b_address.trim()) newErrors.b_address = 'Address is required';
+      if (!formData.b_city.trim()) newErrors.b_city = 'City is required';
+      if (!formData.b_zip.trim()) newErrors.b_zip = 'Zip code is required';
+      if (!/^\d{5}$/.test(formData.b_zip)) newErrors.b_zip = 'Invalid zip code';
+      if (!formData.b_country) newErrors.b_country = 'Country is required';
+      if (!formData.b_state) newErrors.b_state = 'State is required';
+      if (!formData.b_email.trim()) newErrors.b_email = 'Email is required';
+      if (!/\S+@\S+\.\S+/.test(formData.b_email)) newErrors.b_email = 'Invalid email format';
+      if (!formData.b_phone.trim()) newErrors.b_phone = 'Phone number is required';
+      if (!/^\d{10}$/.test(formData.b_phone)) newErrors.b_phone = 'Invalid phone number';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -70,18 +104,29 @@ const Checkout = () => {
       }));
     }
   };
+  // ...existing code...
 
+
+
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    // ...your checkout logic...
+    navigate("/thankyou"); // Redirects without reloading the page
+  };
+
+  // ...existing code...
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
       // Process the form submission
 
-    if (formData.cardNumber === '0000000000000000') {
-      alert('Order submitted successfully!');
-    } else {
-      alert('Invalid card number');
-      return;
-    }
+      if (formData.cardNumber === '0000000000000000') {
+        handleCheckout();
+      } else {
+        alert('Invalid card number');
+        return;
+      }
 
       console.log('Form submitted:', formData);
     } else {
@@ -89,15 +134,24 @@ const Checkout = () => {
     }
   };
 
+
+  const [cartItem, setCartItem] = useState([]);
+  useEffect(() => {
+    const checkoutData = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItem(checkoutData);
+  }, []);
+
+
+
   return (
     <>
       <Innerbanner />
       <section className="checkout-section">
         <div className="container">
-          
 
-            <form onSubmit={handleSubmit}>
-              <div className="row">
+
+          <form onSubmit={handleSubmit}>
+            <div className="row">
               <div className="col-lg-8">
                 <h2 className="checkout-title">Shopping Details</h2>
                 <div className="row mb-3">
@@ -302,10 +356,13 @@ const Checkout = () => {
                           </label>
                           <input
                             type="text"
-                            className="form-control"
+                            className={`form-control ${errors.b_firstName ? 'is-invalid' : ''}`}
                             id="billingFirstName"
                             placeholder="Enter first name"
                           />
+                          {errors.b_firstName && (
+                            <div className="invalid-feedback">{errors.b_firstName}</div>
+                          )}
                         </div>
                         <div className="col-md-6">
                           <label className="form-label" htmlFor="billingLastName">
@@ -313,10 +370,13 @@ const Checkout = () => {
                           </label>
                           <input
                             type="text"
-                            className="form-control"
+                            className={`form-control ${errors.b_lastName ? 'is-invalid' : ''}`}
                             id="billingLastName"
                             placeholder="Enter last name"
                           />
+                          {errors.b_lastName && (
+                            <div className="invalid-feedback">{errors.b_lastName}</div>
+                          )}
                         </div>
                       </div>
                       <div className="mb-3">
@@ -325,10 +385,13 @@ const Checkout = () => {
                         </label>
                         <input
                           type="text"
-                          className="form-control"
+                          className={`form-control ${errors.b_address ? 'is-invalid' : ''}`}
                           id="billingAddress"
                           placeholder="1234 Main St"
                         />
+                        {errors.b_address && (
+                          <div className="invalid-feedback">{errors.b_address}</div>
+                        )}
                       </div>
                       <div className="row mb-3">
                         <div className="col-md-6 mb-3 mb-md-0">
@@ -337,10 +400,13 @@ const Checkout = () => {
                           </label>
                           <input
                             type="text"
-                            className="form-control"
+                            className={`form-control ${errors.b_city ? 'is-invalid' : ''}`}
                             id="billingCity"
                             placeholder="City"
                           />
+                          {errors.b_city && (
+                            <div className="invalid-feedback">{errors.b_city}</div>
+                          )}
                         </div>
                         <div className="col-md-6 mb-3 mb-md-0">
                           <label className="form-label" htmlFor="billingZip">
@@ -348,18 +414,21 @@ const Checkout = () => {
                           </label>
                           <input
                             type="text"
-                            className="form-control"
+                            className={`form-control ${errors.b_zip ? 'is-invalid' : ''}`}
                             id="billingZip"
                             placeholder="Zip"
                             maxLength={5}
                           />
+                          {errors.b_zip && (
+                            <div className="invalid-feedback">{errors.b_zip}</div>
+                          )}
                         </div>
                       </div>
                       <div className="mb-3">
                         <label className="form-label" htmlFor="billingCountry">
                           Country
                         </label>
-                        <select className="form-select" id="billingCountry">
+                        <select className={`form-select ${errors.b_country ? 'is-invalid' : ''}`} id="billingCountry">
                           <option value="">Select Country</option>
                           <option value="us">United States</option>
                           <option value="ca">Canada</option>
@@ -370,7 +439,7 @@ const Checkout = () => {
                         <label className="form-label" htmlFor="billingState">
                           State
                         </label>
-                        <select className="form-select" id="billingState">
+                        <select className={`form-select ${errors.b_state ? 'is-invalid' : ''}`} id="billingState">
                           <option value="">Select State</option>
                           <option value="ny">New York</option>
                           <option value="ca">California</option>
@@ -383,10 +452,13 @@ const Checkout = () => {
                         </label>
                         <input
                           type="email"
-                          className="form-control"
+                          className={`form-control ${errors.b_email ? 'is-invalid' : ''}`}
                           id="billingEmail"
                           placeholder="Enter email"
                         />
+                        {errors.b_email && (
+                          <div className="invalid-feedback">{errors.b_email}</div>
+                        )}
                       </div>
                       <div className="mb-3">
                         <label className="form-label" htmlFor="billingPhone">
@@ -394,11 +466,14 @@ const Checkout = () => {
                         </label>
                         <input
                           type="tel"
-                          className="form-control"
+                          className={`form-control ${errors.b_phone ? 'is-invalid' : ''}`}
                           id="billingPhone"
                           placeholder="Enter phone number"
                           maxLength={10}
                         />
+                        {errors.b_phone && (
+                          <div className="invalid-feedback">{errors.b_phone}</div>
+                        )}
                       </div>
                     </form>
                   </div>
@@ -522,17 +597,23 @@ const Checkout = () => {
                     <h6 className="mb-0">Products</h6>
                     <h6 className="mb-0">Total</h6>
                   </div>
-                  <div className="d-flex align-items-center justify-content-between mb-2">
-                    <p className="mb-0">Modern Sofa</p>
-                    <p className="mb-0">$499</p>
+
+
+
+                  <div className="checkout-data">
+                    {cartItem.map((item, index) => (
+                      <div className="d-flex align-items-center w-100 justify-content-between" key={index}>
+                        <p>{item.name}</p>
+                        <p>{item.price}</p>
+                      </div>
+                    ))}
                   </div>
-                  <div className="d-flex align-items-center justify-content-between mb-2">
-                    <p className="mb-0">Wooden Chair</p>
-                    <p className="mb-0">$149</p>
-                  </div>
+
+
+
                   <div className="d-flex align-items-center justify-content-between my-3 border-top border-bottom py-2">
                     <strong>Subtotal</strong>
-                    <strong>$648</strong>
+                    <strong>${cartItem.reduce((total, item) => total + item.price, 0).toFixed(2)}</strong>
                   </div>
                 </div>
                 <div className="checkout-terms">
@@ -567,9 +648,9 @@ const Checkout = () => {
                 </button>
 
               </div>
-              </div>
-            </form>
-          
+            </div>
+          </form>
+
         </div>
       </section>
     </>
