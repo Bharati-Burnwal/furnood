@@ -30,7 +30,7 @@
     padding: 32px;
 }
 
-.checkout-section input:not([type="radio"]),
+.checkout-section input:not([type="radio"]):not([type="checkbox"]),
 .checkout-section select {
     background: rgba(217, 217, 217, 0.27);
     height: 56px;
@@ -41,4 +41,24 @@
     border: none;
     box-shadow: none;
     outline: none;
+}
+
+.order-summary p {
+    color: #2e2e2e;
+    font-weight: 500;
+}
+
+.order-summary h6 {
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: 700;
+    /* border-bottom: 1px solid; */
+}
+
+.checkout-terms p, .checkout-terms a {
+    color: #2e2e2e;
+}
+
+.checkout-terms a {
+    font-weight: 600;
 }
