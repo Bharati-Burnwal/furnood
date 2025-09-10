@@ -1,0 +1,88 @@
+.range-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.range-img img {
+    transform: scale(1.3);
+    transition: all ease .5s;
+}
+
+.range-img:hover img {
+    transform: scale(1);
+}
+
+
+.sec-title p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: #666666;
+    margin-bottom: 50px;
+}
+
+.sec-title h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    color: #333333;
+}
+
+.about1 {
+    padding: 100px 0;
+}
+
+.about-myself ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
+.about-myself ul li {
+    width: 50%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: #505050;
+}
+
+.about-myself {
+    padding: 100px 0;
+    background-color: #FAFAFA;
+}
+
+.about-myself h4 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+    color: #B88E2F;
+}
+
+.about-myself h2 {
+    max-width: 475px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 110%;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.about-myself p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: #777777;
+}

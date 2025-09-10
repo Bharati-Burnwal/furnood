@@ -1,0 +1,33 @@
+header.bottom-header {
+        padding: 15px 0;
+    box-shadow: 0 0 10px #684a0124;
+}   
+
+header.bottom-header a{
+    text-decoration: none;
+    color: #2e2e2e;
+}
+
+header.bottom-header .nav-links a {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.social ul li {
+    list-style: none;
+    list-style-type: none;
+}
+
+.social ul {
+    margin-bottom: 0;
+}
+
+.top-header {
+    padding: 10px 0;
+    background: #3F3829;
+}
+
+.social ul li, .social ul li a, .top-header a{
+    color: #fff;
+    text-decoration: none;
+}
