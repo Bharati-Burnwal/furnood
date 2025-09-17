@@ -6,6 +6,7 @@ import Productcard from "../components/Productcard";
 import "../components/css/product.css";
 import HomeSlider from "../components/HomeSlider";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 
@@ -45,7 +46,9 @@ const Home = () => {
             </div>
             {Product.slice(0, visiblepro).map((item) => (
               <div class="col-lg-3 col-md-6">
-                <Productcard product={item} key={item.id} />
+                <Link to={`/product/${item.id}`}>
+                  <Productcard product={item} />
+                </Link>
               </div>
               
             ))}
