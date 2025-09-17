@@ -87,7 +87,7 @@ const ProductPage = () => {
                 <h5 id="pageno">-- You are on page no {currentPage}</h5>
                 {currentProducts.map((item) => (
                   <div className="col-lg-4 col-md-6" key={item.id}>
-                    <Link to={`/product/${item.id}`}>
+                    <Link to={`/product/${item.id}/${item.name}`}>
                       <Productcard product={item} />
                     </Link>
                   </div>

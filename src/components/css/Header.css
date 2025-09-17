@@ -31,3 +31,18 @@ header.bottom-header .nav-links a {
     color: #fff;
     text-decoration: none;
 }
+
+li.cart-icon span {
+    position: absolute;
+    background: #e19f00;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    top: -5px;
+    right: -12px;
+}

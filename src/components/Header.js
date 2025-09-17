@@ -3,10 +3,43 @@ import CallIcon from '@mui/icons-material/Call';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import Cart from '../pages/Cart';
+import { useState, useEffect } from "react";
 
 import './css/Header.css';
 
 const Header = () => {
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    // Initial cart count
+    updateCartCount();
+
+    // Add event listener for storage changes
+    window.addEventListener('storage', handleStorageChange);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+  const handleStorageChange = (e) => {
+    // alert();
+    // if (e.key === 'cart') {
+      updateCartCount();
+    // }
+  };
+
+  const updateCartCount = () => {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartCount(cartItems.length);
+  };
+
+
+
+
+
   return (
     <>
     <div className="top-header">
@@ -20,7 +53,9 @@ const Header = () => {
             <ul className="d-flex align-items-center gap-3 justify-content-end">
               <li><SearchIcon/></li>
               <li><FavoriteBorderIcon/></li>
-              <li><ShoppingCartCheckoutIcon/></li>
+              <li className="cart-icon position-relative"><ShoppingCartCheckoutIcon/>
+               {cartCount > 0 && <span>{cartCount}</span>}
+              </li>
             </ul>
             </div>
           </div>

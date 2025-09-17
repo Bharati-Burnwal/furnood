@@ -6,10 +6,20 @@ const Innerbanner = () => {
   const location = useLocation();
 
   // Get the last part of the URL
+  /**
+   * Generates a formatted page title based on the current URL path.
+   *
+   * Splits the pathname by "/", filters out empty segments, and processes the last segment.
+   * Decodes URL-encoded characters, replaces hyphens with spaces, and capitalizes each word.
+   *
+   * @returns {string} The formatted page title (e.g., "Contact Us" for "/contact-us").
+   */
   const getpagetitle = () => {
     const path = location.pathname.split("/").filter(Boolean);
     const lastPart = path[path.length - 1]
-    const word = lastPart.split("-").map((e) => e.charAt(0).toUpperCase() + e.slice(1));
+    const decodedPart = decodeURIComponent(lastPart.replace(/%20/g, " ")); // Decode URL-encoded characters an
+    // d replace %20 with space
+    const word = decodedPart.split("-").map((e) => e.charAt(0).toUpperCase() + e.slice(1));
     console.log('path:', path);
     console.log('word:', word);
     console.log('lastpart =', lastPart);

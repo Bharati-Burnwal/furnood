@@ -46,7 +46,7 @@ const Home = () => {
             </div>
             {Product.slice(0, visiblepro).map((item) => (
               <div class="col-lg-3 col-md-6">
-                <Link to={`/product/${item.id}`}>
+                <Link to={`/product/${item.id}/${item.name}`}>
                   <Productcard product={item} />
                 </Link>
               </div>

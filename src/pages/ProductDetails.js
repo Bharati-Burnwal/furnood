@@ -9,6 +9,7 @@ import Productcard from "../components/Productcard.js";
 
 const ProductDetails = () => {
   const { id } = useParams();
+
   const productitem = Product.find((item) => item.id === Number(id));
   const [mainImg, setMainImg] = useState(productitem.image[0]);
 
@@ -71,6 +72,7 @@ const ProductDetails = () => {
 
     // Cart ko localStorage me save karna
     localStorage.setItem("cart", JSON.stringify(cartItems));
+    window.dispatchEvent(new Event('storage'));
   };
 
   return (

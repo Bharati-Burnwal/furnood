@@ -17,11 +17,13 @@ const Cart = () => {
     const updateCart = cartItem.filter((x) => x.id !== e);
     setcartItem(updateCart);
     localStorage.setItem("cart", JSON.stringify(updateCart));
+    window.dispatchEvent(new Event('storage'));
   };
 
   const clearCart = () => {
     setcartItem([]);
     localStorage.setItem("cart", JSON.stringify([]));
+    window.dispatchEvent(new Event('storage'));
   }
 
   return (
