@@ -40,20 +40,20 @@
 }
 
 .banner-text .main-btn {
-display: flex;
-flex-direction: row;
-align-items: flex-start;
-padding: 25px 72px;
-gap: 10px;
-background: #B88E2F;
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 24px;
-text-transform: uppercase;
-color: #FFFFFF;
-text-decoration: none;
-max-width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 17px 32px;
+    gap: 10px;
+    background: #B88E2F;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-decoration: none;
+    max-width: max-content;
 }
 
 button.main-btn {

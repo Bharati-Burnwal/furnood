@@ -1,4 +1,5 @@
 import "./css/about.css";
+import { Link } from "react-router-dom";
 
 const About2 = () => {
   const features = [
@@ -33,7 +34,7 @@ const About2 = () => {
                   </li>
                 ))}
               </ul>
-              <a href="shop.js" className="main-btn">EXPLORE MORE</a>
+              <Link to="/products" className="main-btn">EXPLORE MORE</Link>
             </div>
             <div className="offset-lg-1 col-md-6">
                 <div class="about-img">

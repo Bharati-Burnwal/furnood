@@ -4,8 +4,8 @@ const Product = [
     name: "Durable Linen Hat",
     price: 199.99,
     image: ["/images/p1.png",
-            "/images/p1.png",
-            "/images/p1.png"
+            "/images/p1-1.png",
+            "/images/p1-2.png"
     ],
     description: "Crafted from premium quality solid wood, this center table combines durability with classic style. The smooth, polished surface and natural wood grain create a warm, inviting look that complements.....",
     category:'Center Table',

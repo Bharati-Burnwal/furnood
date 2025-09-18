@@ -28,9 +28,9 @@ const Home = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
                   elit tellus, luctus nec ullamcorper mattis.
                 </p>
-                <a href="shop" className="main-btn">
-                  BUY NOW
-                </a>
+                <Link to="/products" className="main-btn">
+                  Explore our Products
+                </Link>
               </div>
             </div>
           </div>

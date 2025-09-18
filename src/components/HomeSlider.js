@@ -1,5 +1,6 @@
-import './css/HomeSlider.css';
+import './css/HomeSlider.module.css';
 import RangeSlider from './RangeSlider';
+import { Link } from 'react-router-dom';
 
 
 const HomeSlider = () => {
@@ -12,7 +13,7 @@ const HomeSlider = () => {
                             <div class="ins-txt">
                                 <h2>50+ Beautiful rooms inspiration</h2>
                                 <p>Our designer already made a lot of beautiful prototipe of rooms that inspire you</p>
-                                <a href="/" class="main-btn">EXPLORE MORE</a>
+                                <Link to="/" className="main-btn">EXPLORE MORE</Link>
                             </div>
                         </div>
                         <div class="col-lg-8">

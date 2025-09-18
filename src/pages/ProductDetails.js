@@ -6,13 +6,19 @@ import InnerBanner from "../components/Innerbanner.jsx";
 import "../components/css/product.css";
 import { Link } from "react-router-dom";
 import Productcard from "../components/Productcard.js";
+import { useEffect } from "react";
 
 const ProductDetails = () => {
   const { id } = useParams();
-
   const productitem = Product.find((item) => item.id === Number(id));
   const [mainImg, setMainImg] = useState(productitem.image[0]);
 
+  // Update mainImg and quantity when productitem changes (i.e., when id changes in the URL)
+  useEffect(() => {
+    setMainImg(productitem.image[0]);
+    setQuantity(1);
+  }, [productitem]);
+  // ======================Thumbnail Slider Settings=========================
   const thumbnailSettings = {
     vertical: true,
     slidesToShow: 4,
@@ -66,6 +72,12 @@ const ProductDetails = () => {
       quantity: quantity,
       image: productitem.image[0],
     };
+
+    const isAlreadyInCart = cartItems.some(item => item.id === productToAdd.id);
+    if (isAlreadyInCart) {
+      alert("Product already in cart! You can update the quantity in the cart.");
+      return;
+    }
 
     // Cart me naya product add karo
     cartItems.push(productToAdd);
@@ -181,19 +193,21 @@ const ProductDetails = () => {
         </div>
       </section>
 
-      <section className="related-products my-5">
+      <section className="related-products product-sec my-5">
         <div className="container">
           <h3 className="mb-4">Related Products</h3>
           <div className="row">
-            <Slider {...relatedProSetting}>
-              {relatedProducts.map((item) => (
-                <div key={item.id}>
-                  <Link to={`/product/${item.id}`}>
-                    <Productcard product={item} />
-                  </Link>
-                </div>
-              ))}
-            </Slider>
+            <div className="col-12">
+              <Slider {...relatedProSetting}>
+                {relatedProducts.map((item) => (
+                  <div key={item.id}>
+                    <Link to={`/product/${item.id}/${item.name}`}>
+                      <Productcard product={item} />
+                    </Link>
+                  </div>
+                ))}
+              </Slider>
+            </div>
           </div>
         </div>
       </section>
