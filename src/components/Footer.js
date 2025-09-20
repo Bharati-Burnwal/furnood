@@ -18,19 +18,19 @@ const Footer = () => {
           <div className="col-lg-2">
             <h4>Quick Links</h4>
            <ul>
-              <li><a href="javascript:void(0)">Home</a></li>
-              <li><a href="javascript:void(0)">Shop</a></li>
-              <li><a href="javascript:void(0)">About</a></li>
-              <li><a href="javascript:void(0)">Contact</a></li>
+              <li><a href="">Home</a></li>
+              <li><a href="">Shop</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Contact</a></li>
             </ul> 
           </div>
           <div className="col-lg-3">
             <h4>Quick Links</h4>
            <ul>
-              <li><a href="javascript:void(0)">Payment Option</a></li>
-              <li><a href="javascript:void(0)">Returns</a></li>
-              <li><a href="javascript:void(0)">Terms & Conditions</a></li>
-              <li><a href="javascript:void(0)">Privacy & Policy</a></li>
+              <li><a href="">Payment Option</a></li>
+              <li><a href="">Returns</a></li>
+              <li><a href="">Terms & Conditions</a></li>
+              <li><a href="">Privacy & Policy</a></li>
             </ul> 
           </div>
 
