@@ -7,6 +7,7 @@ import ProductPage from './pages/ProductPage';
 import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import Thankyou from './pages/Thankyou';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -14,7 +15,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
+    <>
     <Router>
       <Header />
       <Routes>
@@ -25,9 +28,15 @@ function App() {
         <Route path="/products" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />}/>
         <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/thankyou" element={<Thankyou/>}/>
       </Routes>
       <Footer/>
     </Router>
+
+
+    
+
+    </>
   )
 }
 

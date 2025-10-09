@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import CallIcon from '@mui/icons-material/Call';
 import SearchIcon from '@mui/icons-material/Search';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { useState, useEffect } from "react";
 
@@ -24,24 +24,42 @@ const Header = () => {
     };
   }, []);
 
+  // =========================Cart count============================
   const updateCartCount = () => {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     setCartCount(cartItems.length);
   };
+  // =========================Cart count End============================
 
-  return (
+  // =========================Search Toggle============================
+  const [showSearch, setShowSearch] = useState(false);
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+  };
+  // =========================Search Toggle End============================
+  
+    return (
     <>
       <div className="top-header">
         <div className="container">
-          <div className="row d-flex justify-content-between">
+          <div className="row d-flex justify-content-between align-items-center">
             <div className="col-md-6">
               <a href="tel:800-285-3051"><CallIcon /> 800-285-3051</a>
             </div>
             <div className="col-md-6">
               <div className="social">
                 <ul className="d-flex align-items-center gap-3 justify-content-end">
-                  <li><SearchIcon /></li>
-                  <li><FavoriteBorderIcon /></li>
+                  <li>
+                    <div className="d-flex align-items-center position-relative search-box">
+                      <input
+                        type="text"
+                        placeholder="Search your product..."
+                        className={`search-input ${showSearch ? 'active' : ''}`}
+                      />
+                      <SearchIcon onClick={toggleSearch} />
+                    </div>
+                  </li>
+                  {/* <li><FavoriteBorderIcon /></li> */}
                   <li className="cart-icon position-relative"><ShoppingCartCheckoutIcon />
                     <span>{cartCount}</span>
                   </li>

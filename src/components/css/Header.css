@@ -1,9 +1,9 @@
 header.bottom-header {
-        padding: 15px 0;
+    padding: 15px 0;
     box-shadow: 0 0 10px #684a0124;
-}   
+}
 
-header.bottom-header a{
+header.bottom-header a {
     text-decoration: none;
     color: #2e2e2e;
 }
@@ -27,7 +27,9 @@ header.bottom-header .nav-links a {
     background: #3F3829;
 }
 
-.social ul li, .social ul li a, .top-header a{
+.social ul li,
+.social ul li a,
+.top-header a {
     color: #fff;
     text-decoration: none;
 }
@@ -45,4 +47,27 @@ li.cart-icon span {
     font-weight: 700;
     top: -5px;
     right: -12px;
+}
+
+.search-box {
+    
+    padding: 0px 10px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 200px;
+    font-size: 14px;
+    color: aliceblue;
+    width: 0;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.search-input.active {
+  width: 250px;
+  opacity: 1;
+  border-bottom: 1px solid #ccc;
 }
