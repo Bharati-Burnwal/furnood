@@ -49,7 +49,7 @@ const Header = () => {
             <div className="col-md-6">
               <div className="social">
                 <ul className="d-flex align-items-center gap-3 justify-content-end">
-                  <li>
+                  {/* <li>
                     <div className="d-flex align-items-center position-relative search-box">
                       <input
                         type="text"
@@ -58,7 +58,7 @@ const Header = () => {
                       />
                       <SearchIcon onClick={toggleSearch} />
                     </div>
-                  </li>
+                  </li> */}
                   {/* <li><FavoriteBorderIcon /></li> */}
                   <li className="cart-icon position-relative"><ShoppingCartCheckoutIcon />
                     <span>{cartCount}</span>

@@ -292,3 +292,7 @@ ul#productTab {
 .slick-prev {
     left: -40px !important;
 }
+
+/* .related-products .slick-slide, .related-products .slick-slide div {
+    height: unset !important;
+} */

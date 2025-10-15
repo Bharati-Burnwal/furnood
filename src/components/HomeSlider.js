@@ -1,4 +1,4 @@
-import './css/HomeSlider.module.css';
+import './css/HomeSlider.css';
 import RangeSlider from './RangeSlider';
 import { Link } from 'react-router-dom';
 

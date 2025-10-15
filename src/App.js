@@ -15,7 +15,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
   return (
     <>
     <Router>
