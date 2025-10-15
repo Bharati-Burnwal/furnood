@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import CallIcon from '@mui/icons-material/Call';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 // import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { useState, useEffect } from "react";
@@ -32,10 +32,10 @@ const Header = () => {
   // =========================Cart count End============================
 
   // =========================Search Toggle============================
-  const [showSearch, setShowSearch] = useState(false);
-  const toggleSearch = () => {
-    setShowSearch(!showSearch);
-  };
+  // const [showSearch, setShowSearch] = useState(false);
+  // const toggleSearch = () => {
+  //   setShowSearch(!showSearch);
+  // };
   // =========================Search Toggle End============================
   
     return (
